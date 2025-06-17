@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AI Mines Predictor | Powered by ChatGPT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,67 +35,20 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+        html,
+        body {
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--card-bg);
-            min-height: 100vh;
             color: white;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding-top: 3.5rem;
-            overflow-x: hidden;
-            font-size: 14px;
-        }
-
-        /* Top Bar - Perfectly Centered */
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3.5rem;
-            background: #202123;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1rem;
-            border-bottom: 1px solid #333;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .top-bar-left {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex: 1;
-            justify-content: flex-start;
-            min-width: 0;
-        }
-
-        .top-bar-center {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .top-bar-right {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .top-bar-center .arrow {
-            height: 15px;
-            width: auto;
+            position: relative;
         }
 
         .gptlogotopbar {
@@ -104,51 +58,145 @@
             margin-right: 10px;
         }
 
-        .top-bar-title {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: white;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
+        /* Main Content Area with Scroll */
+        .main-content {
+            flex: 1;
+            width: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .app-container {
-            flex: 1;
             display: flex;
             flex-direction: column;
             border: 1px solid rgb(47, 102, 121);
             width: 100%;
             max-width: 500px;
             margin: 0 auto;
-            padding: 1rem;
+            /* height: 525px; */
+            overflow-y: auto;
+
         }
 
-        /* [Rest of your existing CSS remains exactly the same] */
         /* Description Section */
         .txt {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: calc(100% - 1.5rem);
-            max-width: 500px;
-            margin: 1rem auto 0;
-            padding: 0 0.5rem;
+            width: 100%;
+            margin: 1.3rem 0 0;
+            padding: 0 1.0rem;
+            gap: 0.5rem;
+        }
+
+        h1 {
+            color: rgb(255, 255, 255);
+            margin-top: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+            text-shadow: 1.5px 1.5px 1.5px #24a1de;
+            font-size: 1.5rem;
+        }
+
+        .navbar {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            border-bottom: 1px solid rgb(47, 102, 121);
+            color: rgb(47, 102, 121);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            padding: 0.5rem 1rem;
+        }
+
+        .navgpt {
+            height: 40px;
+            width: auto;
+            border-radius: 6px;
+        }
+
+        .gpt-content {
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            color: #f0f0f0;
+            font-size: large;
+        }
+
+        .gpt-description {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #1a1a1a;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #333;
+        }
+
+        .show {
+            display: block;
+        }
+
+        .arrow {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .gpt-description.active .arrow {
+            transform: rotate(180deg);
         }
 
         .desc {
             font-family: 'Roboto', sans-serif;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 1.1rem;
             font-weight: 500;
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 1.5px 1.5px 1.5px #80c2ee;
+        }
+
+        .disclaimer {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            color: white;
+            text-align: center;
+            margin: 0.5rem 0;
+            padding: 0 1rem;
+            text-shadow: 1.5px 1.5px 1.5px #80c2ee;
         }
 
         .register-button {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             border: none;
-            padding: 0.6rem 1rem;
+            padding: 0.6rem 0.8rem;
             border-radius: 0.6rem;
             font-weight: 600;
             cursor: pointer;
@@ -158,56 +206,57 @@
             font-size: 0.8rem;
             box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
             transition: transform 0.2s, box-shadow 0.2s;
-            width: 40%;
-            max-width: 150px;
+            min-width: fit-content;
+            flex-shrink: 0;
         }
 
         /* Logo Comparison Section */
         .gptt {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-evenly;
             align-items: center;
-            width: calc(100% - 1.5rem);
-            max-width: 500px;
+            width: 100%;
             margin: 1.5rem auto;
-            padding: 0 3rem;
+            padding: 0 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .gptlogo,
         .mineslogo {
-            height: 60px;
+            height: 50px;
             width: auto;
             border-radius: 6px;
             flex-shrink: 0;
         }
 
         .gptt .description {
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             font-weight: 500;
-            margin: 0 0.5rem;
             color: var(--text-primary);
+            flex-shrink: 0;
         }
 
         .money-gif {
-            height: 60px;
+            height: 50px;
             width: auto;
             border-radius: 6px;
             box-shadow: 0 0 15px rgba(36, 161, 222, 0.5);
+            flex-shrink: 0;
         }
 
-        /* Main Container - Mobile Optimized */
+        /* Main Container */
         .container {
             background: var(--card-bg);
             border-radius: 0.8rem;
-            padding: 1.2rem;
-            width: calc(100% - 1.5rem);
-            max-width: 500px;
+            padding: 1rem;
+            width: 100%;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border: 1px solid var(--border-color);
-            margin: 0.75rem auto;
+            margin: 0.75rem 0;
         }
 
-        /* Period Info - Mobile Optimized */
+        /* Period Info */
         .period-info {
             display: flex;
             flex-direction: column;
@@ -223,26 +272,31 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            gap: 0.5rem;
         }
 
         .period-label {
             color: var(--text-secondary);
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             font-weight: 500;
             white-space: nowrap;
+            flex-shrink: 0;
+            margin-left: 0rem;
         }
 
         .period-number {
             font-family: 'Monaco', 'Menlo', monospace;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--text-primary);
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 65%;
             white-space: nowrap;
             direction: rtl;
-            text-align: left;
+            text-align: right;
+            min-width: 0;
+            flex: 1;
+            margin-right: 0%;
         }
 
         .timer {
@@ -260,7 +314,7 @@
             color: var(--primary);
         }
 
-        /* Prediction Section - Mobile Optimized */
+        /* Prediction Section */
         .prediction-section {
             text-align: center;
             margin-top: 0.8rem;
@@ -271,6 +325,7 @@
             margin-bottom: 1.2rem;
             color: var(--text-primary);
             line-height: 1.5;
+            padding: 0 0.5rem;
         }
 
         .action-button {
@@ -298,7 +353,7 @@
             box-shadow: 0 1px 5px rgba(16, 163, 127, 0.3);
         }
 
-        /* Thinking State - Mobile Optimized */
+        /* Thinking State */
         .thinking-state {
             display: flex;
             flex-direction: column;
@@ -316,10 +371,10 @@
             animation: spin 1s linear infinite;
         }
 
-        .thinking-text {
+        /* .thinking-text {
             color: var(--text-secondary);
             font-size: 0.85rem;
-        }
+        } */
 
         .thinking-dots span {
             display: inline-block;
@@ -339,7 +394,23 @@
             animation-delay: 0.4s;
         }
 
-        /* Result State - Mobile Optimized */
+         .thinking-messages {
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .thinking-text {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        text-align: center;
+        transition: opacity 0.3s ease;
+        width: 100%;
+    }
+
+        /* Result State */
         .result-state {
             padding: 1rem 0;
         }
@@ -398,14 +469,13 @@
         /* Telegram Footer */
         .telegram-footer {
             background: var(--card-bg);
-            border: 1px solid rgba(0, 136, 204, 0.2);
+            border-top: 1px solid rgba(0, 136, 204, 0.2);
             border-radius: 0.8rem;
             padding: 1rem;
-            margin-top:1rem;
-            margin-bottom: 0rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
             text-align: center;
-            width: calc(100% - 1.5rem);
-            max-width: 500px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
@@ -450,9 +520,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.6;
             }
@@ -462,53 +535,114 @@
             from {
                 transform: scale3d(1, 1, 1);
             }
+
             30% {
                 transform: scale3d(1.15, 0.85, 1);
             }
+
             40% {
                 transform: scale3d(0.85, 1.15, 1);
             }
+
             50% {
                 transform: scale3d(1.05, 0.95, 1);
             }
+
             65% {
                 transform: scale3d(0.95, 1.05, 1);
             }
+
             75% {
                 transform: scale3d(1.02, 0.98, 1);
             }
+
             to {
                 transform: scale3d(1, 1, 1);
             }
         }
 
         @keyframes dotsBounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-3px);
             }
         }
 
         /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .top-bar-center {
-                position: static;
-                transform: none;
-                left: auto;
-                flex: 1;
-                justify-content: center;
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+                margin-left: 0;
+                margin-right: 0;
             }
-            
-            .top-bar-right {
-                display: none;
+
+            .txt {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .desc {
+                margin-bottom: 0.5rem;
+                text-align: center;
+                font-size: 1rem;
+            }
+
+            .disclaimer {
+                font-size: 1rem;
+            }
+
+            .register-button {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .gptlogo,
+            .mineslogo,
+            .money-gif {
+                height: 40px;
+            }
+
+            .gptt .description {
+                font-size: 1rem;
+            }
+
+            .period-label {
+                font-size: 0.8rem;
+            }
+
+            .period-number {
+                font-size: 0.8rem;
+            }
+
+            .prediction-value {
+                font-size: 1.6rem;
+                padding: 0.6rem 1rem;
+            }
+
+            .container {
+                padding: 0.8rem;
             }
         }
 
         @media (max-width: 350px) {
-            .top-bar-title {
-                max-width: 120px;
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            .gptlogo,
+            .mineslogo,
+            .money-gif {
+                height: 35px;
+            }
+
+            .gptt .description {
+                font-size: 0.9rem;
             }
 
             .period-number {
@@ -516,38 +650,7 @@
             }
 
             .prediction-value {
-                font-size: 1.8rem;
-                padding: 0.6rem 1.2rem;
-            }
-
-            .gptlogo,
-            .mineslogo,
-            .money-gif {
-                height: 50px;
-            }
-
-            .gptt .description {
-                font-size: 1.5rem;
-                margin: 0 0.3rem;
-            }
-        }
-
-        @media (min-width: 500px) {
-            body {
-                padding-top: 4rem;
-            }
-
-            .top-bar {
-                height: 4rem;
-                padding: 0 1.5rem;
-            }
-
-            .container {
-                margin: 1.5rem auto;
-            }
-
-            .telegram-footer {
-                margin: 1.5rem auto;
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -555,111 +658,154 @@
 </head>
 
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <img src="images/chatgpt.png" alt="Logo" class="gptlogotopbar">
-            <div class="top-bar-title">Mines Predictor</div>
-        </div>
-        
-        <div class="top-bar-center">
-            <span>ChatGPT</span>
-            <img src="images/down.png" alt="Dropdown" class="arrow">
-        </div>
-        
-        <div class="top-bar-right"></div>
-    </div>
-
-    <div class="app-container">
-        <!-- Description Section -->
-        <div class="txt">
-            <div class="desc">
-                This predictor only works with TashanWin
-            </div>
-            <button class="register-button" onclick="window.open('https://www.tashanwin18.com/#/login', '_blank')">
-                Register Here
-            </button>
-        </div>
-
-        <!-- Logo Comparison Section -->
-        <div class="gptt">
-            <img src="images/chatgpt.png" alt="ChatGPT Logo" class="gptlogo">
-            <span class="description">+</span>
-            <img src="images/tashanwin.png" alt="TashanWin Logo" class="mineslogo">
-            <span class="description">=</span>
-            <img src="images/money.gif" alt="Money GIF" class="money-gif">
-        </div>
-
-        <!-- Main Container -->
-        <div class="container">
-            <!-- Period Information -->
-            <div class="period-info">
-                <div class="period-row">
-                    <div class="period-label">Current Game Period</div>
-                    <div class="period-number" id="periodNumber">20250611100000001</div>
+    <div class="main-content">
+        <div class="app-container">
+            <nav class="navbar">
+                <div class="gpt-content">
+                    <div class="three-line-menu">
+                        <img src="images/menu.png" alt="Logo" class="navgpt" />
+                    </div>
+                    <div class="gpt-description" id="dropdownButton">
+                        ChatGPT
+                        <img src="images/down.png" style="height: 15px; font-size: bold" class="arrow" alt="img" />
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="#">Home</a>
+                            <a href="#">Predictions</a>
+                            <a href="#">Settings</a>
+                            <a href="#">Help</a>
+                        </div>
+                    </div>
+                    <img src="images/message.png" style="height: 50px" alt="Logo" class="navgpt" />
                 </div>
-                <div class="timer">
-                    <span class="timer-icon">⏳</span>
-                    <span class="timer-value" id="timerDisplay">3:00</span>
+            </nav>
+
+            <h1>Color Trading Predictor</h1>
+
+            <!-- Description Section -->
+            <div class="txt">
+                <div class="desc">
+                    This predictor only works with TashanWin
                 </div>
+                <button class="register-button"
+                    onclick="window.open('http://www.tashanwin.club/#/register?invitationCode=633741365429', '_blank')">
+                    Register Here
+                </button>
             </div>
 
-            <!-- Prediction Section -->
-            <div class="prediction-section">
-                <!-- Initial Question -->
-                <div id="questionSection">
-                    <p class="prediction-question">ChatGPT can analyze patterns and predict the next Mines result with
-                        high accuracy. Would you like to generate a prediction?</p>
-                    <button class="action-button" onclick="showPrediction()">
-                        Generate AI Prediction
-                    </button>
-                </div>
+            <!-- Logo Comparison Section -->
+            <div class="gptt">
+                <img src="images/chatgpt.png" alt="ChatGPT Logo" class="gptlogo">
+                <span class="description">+</span>
+                <img src="images/tashanwin.png" alt="TashanWin Logo" class="mineslogo">
+                <span class="description">=</span>
+                <img src="images/money.gif" alt="Money GIF" class="money-gif">
+            </div>
 
-                <!-- Thinking State -->
-                <div id="thinkingSection" class="hidden">
-                    <div class="thinking-state">
-                        <div class="spinner"></div>
-                        <p class="thinking-text">
-                            Analyzing game patterns
-                            <span class="thinking-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </span>
-                        </p>
+            <div class="disclaimer">Disclaimer: This predictor is only for the WinGo 3 min</div>
+
+            <!-- Main Container -->
+            <div class="container">
+                <!-- Period Information -->
+                <div class="period-info">
+                    <div class="period-row">
+                        <div class="period-label">Current Game Period:</div>
+                        <div class="period-number" id="periodNumber">20250611100000001</div>
+                    </div>
+                    <div class="timer">
+                        <span class="timer-icon">⏳</span>
+                        <span class="timer-value" id="timerDisplay">3:00</span>
                     </div>
                 </div>
 
-                <!-- Result State -->
-                <div id="resultSection" class="hidden">
-                    <div class="result-state">
-                        <p class="prediction-label">ChatGPT Prediction for Next Period</p>
-                        <div id="predictionValue" class="prediction-value"></div>
-                        <div class="confidence">
-                            <span id="confidenceText">AI Confidence Level: 87%</span>
-                            <div class="confidence-meter">
-                                <div class="confidence-fill" id="confidenceFill"></div>
+                <!-- Prediction Section -->
+                <div class="prediction-section">
+                    <!-- Initial Question -->
+                    <div id="questionSection">
+                        <p class="prediction-question">ChatGPT can analyze patterns and predict the next Mines result
+                            with high accuracy. Would you like to generate a prediction?</p>
+                        <button class="action-button" onclick="showPrediction()">
+                            Generate AI Prediction
+                        </button>
+                    </div>
+
+                    <!-- Thinking State -->
+                    <!-- <div id="thinkingSection" class="hidden">
+                        <div class="thinking-state">
+                            <div class="spinner"></div>
+                            <p class="thinking-text">
+                                Analyzing game patterns
+                                <span class="thinking-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </span>
+                            </p>
+                        </div>
+                    </div> -->
+
+                    <div id="thinkingSection" class="hidden">
+                        <div class="thinking-state">
+                            <div class="spinner"></div>
+                            <div class="thinking-messages">
+                                <p class="thinking-text" id="thinkingMessage">Initializing AI analysis...</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Result State -->
+                    <div id="resultSection" class="hidden">
+                        <div class="result-state">
+                            <p class="prediction-label">ChatGPT Prediction for Next Period</p>
+                            <div id="predictionValue" class="prediction-value"></div>
+                            <div class="confidence">
+                                <span id="confidenceText">AI Confidence Level: 87%</span>
+                                <div class="confidence-meter">
+                                    <div class="confidence-fill" id="confidenceFill"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Telegram Footer -->
-        <div class="telegram-footer">
-            <div class="telegram-title">
-                <i class="fab fa-telegram telegram-icon"></i>
-                <a href="https://t.me//+ztqpvs0RzbU3NmFl" class="telegram-link" target="_blank">Join Our Telegram</a>
+            <!-- Telegram Footer -->
+            <div class="telegram-footer">
+                <div class="telegram-title">
+                    <i class="fab fa-telegram telegram-icon"></i>
+                    <a href="https://t.me//+ztqpvs0RzbU3NmFl" class="telegram-link" target="_blank">Join Our
+                        Telegram</a>
+                </div>
+                <p class="telegram-text">
+                    If you have any issues or questions,
+                    <a href="https://t.me//+ztqpvs0RzbU3NmFl" class="telegram-link" target="_blank">DM us on
+                        Telegram:</a>
+                </p>
             </div>
-            <p class="telegram-text">
-                If you have any issues or questions,
-                <a href="https://t.me//+ztqpvs0RzbU3NmFl" class="telegram-link" target="_blank">DM us on Telegram:</a>
-            </p>
         </div>
     </div>
 
     <script>
+        // Dropdown functionality
+        document.getElementById('dropdownButton').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.getElementById('dropdownContent').classList.toggle('show');
+        });
+
+        // Close the dropdown if clicked outside
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('.gpt-description') && !event.target.closest('.gpt-description')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                        document.getElementById('dropdownButton').classList.remove('active');
+                    }
+                }
+            }
+        });
+
         let currentPeriod = '';
         let timeRemaining = 180; // 3 minutes in seconds
 
@@ -672,12 +818,12 @@
 
             // Check if current time is before 5:30 AM
             const isBeforeReset = now.getHours() < 5 || (now.getHours() === 5 && now.getMinutes() < 30);
-            
+
             // If before 5:30 AM, use previous day's date
-            const effectiveDate = isBeforeReset ? 
+            const effectiveDate = isBeforeReset ?
                 new Date(now.getTime() - 24 * 60 * 60 * 1000) : // Subtract one day
                 now;
-            
+
             const effectiveYear = effectiveDate.getFullYear();
             const effectiveMonth = String(effectiveDate.getMonth() + 1).padStart(2, '0');
             const effectiveDay = String(effectiveDate.getDate()).padStart(2, '0');
@@ -689,24 +835,24 @@
                 now.getDate(),
                 5, 30, 0
             );
-            
-            const minutesSinceReset = isBeforeReset ? 
+
+            const minutesSinceReset = isBeforeReset ?
                 Math.floor((now.getTime() - (resetTime.getTime() - 24 * 60 * 60 * 1000)) / (1000 * 60)) :
                 Math.floor((now.getTime() - resetTime.getTime()) / (1000 * 60));
-            
+
             const periodsSinceReset = Math.floor(minutesSinceReset / 3);
             const periodNumber = String(100020001 + periodsSinceReset).padStart(8, '0');
-            
+
             return `${effectiveYear}${effectiveMonth}${effectiveDay}${periodNumber}`;
         }
 
         // Calculate time remaining until next period with 5:30 AM reset
         function calculateTimeRemaining() {
             const now = new Date();
-            
+
             // Check if current time is before 5:30 AM
             const isBeforeReset = now.getHours() < 5 || (now.getHours() === 5 && now.getMinutes() < 30);
-            
+
             // Calculate minutes since 5:30 AM (either today or yesterday)
             const resetTime = new Date(
                 now.getFullYear(),
@@ -714,11 +860,11 @@
                 now.getDate(),
                 5, 30, 0
             );
-            
-            const minutesSinceReset = isBeforeReset ? 
+
+            const minutesSinceReset = isBeforeReset ?
                 Math.floor((now.getTime() - (resetTime.getTime() - 24 * 60 * 60 * 1000)) / (1000 * 60)) :
                 Math.floor((now.getTime() - resetTime.getTime()) / (1000 * 60));
-            
+
             const secondsInCurrentPeriod = ((minutesSinceReset % 3) * 60) + now.getSeconds();
             return 180 - secondsInCurrentPeriod;
         }
@@ -750,18 +896,84 @@
         }
 
         // Show prediction with animation
-        function showPrediction() {
-            document.getElementById('questionSection').classList.add('hidden');
-            document.getElementById('thinkingSection').classList.remove('hidden');
+        // function showPrediction() {
+        //     document.getElementById('questionSection').classList.add('hidden');
+        //     document.getElementById('thinkingSection').classList.remove('hidden');
 
-            // Simulate AI thinking time
+        //     // Simulate AI thinking time
+        //     setTimeout(() => {
+        //         const predictions = ['Big', 'Small'];
+        //         const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+        //         const confidence = Math.floor(Math.random() * 15) + 82; // 82-96%
+
+        //         document.getElementById('thinkingSection').classList.add('hidden');
+        //         document.getElementById('resultSection').classList.remove('hidden');
+
+        //         const predictionElement = document.getElementById('predictionValue');
+        //         predictionElement.textContent = randomPrediction;
+        //         predictionElement.className = `prediction-value ${randomPrediction === 'Big' ? 'prediction-big' : 'prediction-small'}`;
+        //         predictionElement.style.animation = 'rubberBand 0.8s';
+
+        //         document.getElementById('confidenceText').textContent = `AI Confidence Level: ${confidence}%`;
+        //         document.getElementById('confidenceFill').style.width = `${confidence}%`;
+
+        //         // Remove animation after it completes
+        //         setTimeout(() => {
+        //             predictionElement.style.animation = '';
+        //         }, 800);
+        //     }, 3000);
+        // }
+
+       function showPrediction() {
+        document.getElementById('questionSection').classList.add('hidden');
+        document.getElementById('thinkingSection').classList.remove('hidden');
+
+        const messages = [
+            "Initializing AI neural network...",
+            "Connecting to game servers...",
+            "Downloading historical data...",
+            "Analyzing 500+ previous rounds...",
+            "Identifying pattern sequences...",
+            "Calculating probability distributions...",
+            "Cross-referencing with AI models...",
+            "Running Monte Carlo simulations...",
+            "Validating prediction accuracy...",
+            "Finalizing results...",
+            "Almost there..."
+        ];
+
+        let currentMessage = 0;
+        const messageElement = document.getElementById('thinkingMessage');
+
+        // Update message every second with smooth transition
+        const messageInterval = setInterval(() => {
+            currentMessage = (currentMessage + 1) % messages.length;
+            // Fade out
+            messageElement.style.opacity = 0;
             setTimeout(() => {
+                messageElement.textContent = messages[currentMessage];
+                // Fade in
+                messageElement.style.opacity = 1;
+            }, 200);
+        }, 1500); // Change message every 1.5 seconds
+
+        // Simulate AI thinking time with random duration (4-6 seconds)
+        const thinkingTime = 4000 + Math.random() * 2000;
+
+        setTimeout(() => {
+            clearInterval(messageInterval);
+            
+            // Final message before showing result
+            messageElement.textContent = "Prediction complete!";
+            
+            // Small delay before showing result
+            setTimeout(() => {
+                document.getElementById('thinkingSection').classList.add('hidden');
+                document.getElementById('resultSection').classList.remove('hidden');
+
                 const predictions = ['Big', 'Small'];
                 const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
                 const confidence = Math.floor(Math.random() * 15) + 82; // 82-96%
-
-                document.getElementById('thinkingSection').classList.add('hidden');
-                document.getElementById('resultSection').classList.remove('hidden');
 
                 const predictionElement = document.getElementById('predictionValue');
                 predictionElement.textContent = randomPrediction;
@@ -775,8 +987,9 @@
                 setTimeout(() => {
                     predictionElement.style.animation = '';
                 }, 800);
-            }, 3000);
-        }
+            }, 500);
+        }, thinkingTime);
+    }
 
         // Reset prediction interface when period changes
         function resetPrediction() {
@@ -800,4 +1013,5 @@
         }, 1000);
     </script>
 </body>
+
 </html>
