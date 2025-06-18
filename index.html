@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="QVDkHn1u7_pJmRhGXWekRlYBe-4LRAUiwC5ynfkzj0k" />
-    <meta name="description" content="Color Trading Hacked using CHATGPT with 99% Accuracy. Color Trading AI Powered BOT. Boost your winning chances with AI-powered predictions.">
+    <meta name="description"
+        content="Color Trading Hacked using CHATGPT with 99% Accuracy. Color Trading AI Powered BOT. Boost your winning chances with AI-powered predictions.">
 
     <title>Color Trading Hack: AI Powered Color Trading Bot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,21 +40,19 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html,
-        body {
+        html {
             height: 100%;
             overflow-x: hidden;
-            overflow-y: auto;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            /* background: var(--card-bg); */
             background: black;
             color: white;
             display: flex;
             flex-direction: column;
-            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .gptlogotopbar {
@@ -70,20 +68,18 @@
             width: 100%;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            overscroll-behavior-y: contain;
         }
 
         .app-container {
             display: flex;
             flex-direction: column;
-            /* border: 1px solid rgb(47, 102, 121); */
             width: 100%;
             max-width: 500px;
             margin: 0 auto;
-            /* height: 525px; */
-            overflow-y: auto;
-
+            min-height: 100%;
+            overflow-x: hidden;
         }
-
 
         /* Description Section */
         .txt {
@@ -91,8 +87,8 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin: 1.3rem 0 0;
-            padding: 0 1.0rem;
+            margin-top: 5px;
+            padding: 0px 1rem;
             gap: 0.5rem;
         }
 
@@ -102,18 +98,27 @@
             margin-bottom: 15px;
             text-align: center;
             text-shadow: 1.5px 1.5px 1.5px #24a1de;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            padding: 0 1rem;
         }
 
         .navbar {
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             border-bottom: 1px solid rgb(47, 102, 121);
             color: rgb(47, 102, 121);
-            /* color:black; */
             position: sticky;
             top: 0;
             z-index: 999;
             padding: 0.5rem 1rem;
+            background: black;
+        }
+
+        .tashanwinlogo {
+            height: 40px;
+            width: auto;
+            border-radius: 6px;
+            margin-left: 10px;
+            margin-right: 22px;
         }
 
         .navgpt {
@@ -181,53 +186,82 @@
 
         .desc {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             flex: 1;
             min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
-            text-shadow: 1.5px 1.5px 1.5px #80c2ee;
+            text-shadow: 1.5px 1.5px 1.5px #4a7998;
+            white-space: nowrap;
         }
 
         .disclaimer {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             color: white;
             text-align: center;
             margin: 0.5rem 0;
             padding: 0 1rem;
-            text-shadow: 1.5px 1.5px 1.5px #80c2ee;
+            text-shadow: 1.5px 1.5px 1.5px #104c74;
         }
 
         .register-button {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             border: none;
-            padding: 0.6rem 0.8rem;
+            padding: 0.8rem 1rem;
             border-radius: 0.6rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
-            box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
-            transition: transform 0.2s, box-shadow 0.2s;
-            min-width: fit-content;
-            flex-shrink: 0;
+            font-size: 0.9rem;
+            margin: 0.5rem auto;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            width: calc(100% - 2rem);
+            max-width: 420px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .register-button:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(59, 130, 246, 0.4);
+        }
+
+        .register-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .register-button:hover::before {
+            left: 100%;
         }
 
         /* Logo Comparison Section */
         .gptt {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
             align-items: center;
             width: 100%;
             margin: 1.5rem auto;
             padding: 0 0.5rem;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.8rem;
         }
 
         .gptlogo,
@@ -255,13 +289,12 @@
 
         /* Main Container */
         .container {
-            /* background: var(--card-bg); */
             border-radius: 0.8rem;
             padding: 1rem;
-            width: 100%;
+            width: calc(100% - 2rem);
+            max-width: 500px;
+            margin: 0.75rem auto;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            /* border: 1px solid var(--border-color); */
-            margin: 0.75rem 0;
         }
 
         /* Period Info */
@@ -289,7 +322,6 @@
             font-weight: 500;
             white-space: nowrap;
             flex-shrink: 0;
-            margin-left: 0rem;
         }
 
         .period-number {
@@ -304,7 +336,6 @@
             text-align: right;
             min-width: 0;
             flex: 1;
-            margin-right: 0%;
         }
 
         .timer {
@@ -379,11 +410,6 @@
             animation: spin 1s linear infinite;
         }
 
-        /* .thinking-text {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        } */
-
         .thinking-dots span {
             display: inline-block;
             width: 4px;
@@ -402,21 +428,21 @@
             animation-delay: 0.4s;
         }
 
-         .thinking-messages {
-        min-height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 10px;
-    }
+        .thinking-messages {
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
 
-    .thinking-text {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        text-align: center;
-        transition: opacity 0.3s ease;
-        width: 100%;
-    }
+        .thinking-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            text-align: center;
+            transition: opacity 0.3s ease;
+            width: 100%;
+        }
 
         /* Result State */
         .result-state {
@@ -476,10 +502,8 @@
 
         /* Telegram Footer */
         .telegram-footer {
-            /* background: var(--card-bg); */
             background: black;
-            border-top: 1px solid rgba(0, 136, 204, 0.2);
-            border-radius: 0.8rem;
+            border-top: 1px solid rgb(47, 102, 121);
             padding: 1rem;
             margin-top: 1rem;
             margin-bottom: 1rem;
@@ -521,6 +545,25 @@
             display: none !important;
         }
 
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         /* Animations */
         @keyframes spin {
             to {
@@ -529,12 +572,9 @@
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
+            0%, 100% {
                 opacity: 1;
             }
-
             50% {
                 opacity: 0.6;
             }
@@ -544,71 +584,57 @@
             from {
                 transform: scale3d(1, 1, 1);
             }
-
             30% {
                 transform: scale3d(1.15, 0.85, 1);
             }
-
             40% {
                 transform: scale3d(0.85, 1.15, 1);
             }
-
             50% {
                 transform: scale3d(1.05, 0.95, 1);
             }
-
             65% {
                 transform: scale3d(0.95, 1.05, 1);
             }
-
             75% {
                 transform: scale3d(1.02, 0.98, 1);
             }
-
             to {
                 transform: scale3d(1, 1, 1);
             }
         }
 
         @keyframes dotsBounce {
-
-            0%,
-            100% {
+            0%, 100% {
                 transform: translateY(0);
             }
-
             50% {
                 transform: translateY(-3px);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -468px 0;
+            }
+            100% {
+                background-position: 468px 0;
             }
         }
 
         /* Responsive adjustments */
         @media (max-width: 480px) {
             h1 {
-                font-size: 1.3rem;
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .txt {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+                font-size: 1.5rem;
             }
 
             .desc {
-                margin-bottom: 0.5rem;
-                text-align: center;
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
 
-            .disclaimer {
-                font-size: 1rem;
-            }
-
-            .register-button {
-                width: 100%;
-                max-width: 200px;
+            .tashanwinlogo {
+                height: 35px;
+                margin-left: 5px;
             }
 
             .gptlogo,
@@ -637,11 +663,28 @@
             .container {
                 padding: 0.8rem;
             }
+
+            .register-button {
+                padding: 0.7rem 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .txt {
+                padding: 0 1rem;
+            }
         }
 
-        @media (max-width: 350px) {
+        @media (max-width: 375px) {
             h1 {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+            }
+
+            .desc {
+                font-size: 0.8rem;
+            }
+
+            .tashanwinlogo {
+                height: 30px;
             }
 
             .gptlogo,
@@ -654,12 +697,32 @@
                 font-size: 0.9rem;
             }
 
-            .period-number {
-                font-size: 0.7rem;
+            .prediction-value {
+                font-size: 1.4rem;
+            }
+
+            .register-button {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 1.2rem;
+            }
+
+            .gptt {
+                gap: 0.5rem;
+            }
+
+            .gptlogo,
+            .mineslogo,
+            .money-gif {
+                height: 30px;
             }
 
             .prediction-value {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -688,18 +751,21 @@
                 </div>
             </nav>
 
-            <h1>Color Trading Predictor</h1>
-
             <!-- Description Section -->
             <div class="txt">
-                <div class="desc">
-                    This predictor only works with TashanWin
-                </div>
-                <button class="register-button"
-                    onclick="window.open('http://www.tashanwin.club/#/register?invitationCode=633741365429', '_blank')">
-                    Register Here
-                </button>
+                <span class="desc">This Predictor only Works on
+                    <strong><a target="_blank" href="https://s-affiliates.com/?serial=61321090&creative_id=4053"
+                            style="text-decoration: none; color: #24a1de;">TashanWin
+                        </a></strong></span>
+                <img src="images/tashanwin.jpg" alt="Logo" class="tashanwinlogo" />
             </div>
+
+            <h1>Color Trading Predictor</h1>
+
+            <button class="register-button"
+                onclick="window.open('http://www.tashanwin.club/#/register?invitationCode=633741365429', '_blank')">
+                Register Here
+            </button>
 
             <!-- Logo Comparison Section -->
             <div class="gptt">
@@ -710,7 +776,11 @@
                 <img src="images/money.gif" alt="Money GIF" class="money-gif">
             </div>
 
-            <div class="disclaimer">Disclaimer: This predictor is only for the WinGo 3 min</div>
+            <div class="disclaimer">
+                <span style="font-size: large; margin: 5px">
+                    <p style="color: red;display: inline;">Disclaimer!</p> Select Wingo 3min in Tashan app
+                </span>
+            </div>
 
             <!-- Main Container -->
             <div class="container">
@@ -737,8 +807,6 @@
                         </button>
                     </div>
 
-                   
-
                     <div id="thinkingSection" class="hidden">
                         <div class="thinking-state">
                             <div class="spinner"></div>
@@ -747,7 +815,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <!-- Result State -->
                     <div id="resultSection" class="hidden">
@@ -891,101 +958,72 @@
             }
         }
 
-        // Show prediction with animation
-        // function showPrediction() {
-        //     document.getElementById('questionSection').classList.add('hidden');
-        //     document.getElementById('thinkingSection').classList.remove('hidden');
+        function showPrediction() {
+            document.getElementById('questionSection').classList.add('hidden');
+            document.getElementById('thinkingSection').classList.remove('hidden');
 
-        //     // Simulate AI thinking time
-        //     setTimeout(() => {
-        //         const predictions = ['Big', 'Small'];
-        //         const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
-        //         const confidence = Math.floor(Math.random() * 15) + 82; // 82-96%
+            const messages = [
+                "Initializing AI neural network...",
+                "Connecting to game servers...",
+                "Downloading historical data...",
+                "Analyzing 500+ previous rounds...",
+                "Identifying pattern sequences...",
+                "Calculating probability distributions...",
+                "Cross-referencing with AI models...",
+                "Running Monte Carlo simulations...",
+                "Validating prediction accuracy...",
+                "Finalizing results...",
+                "Almost there..."
+            ];
 
-        //         document.getElementById('thinkingSection').classList.add('hidden');
-        //         document.getElementById('resultSection').classList.remove('hidden');
+            let currentMessage = 0;
+            const messageElement = document.getElementById('thinkingMessage');
 
-        //         const predictionElement = document.getElementById('predictionValue');
-        //         predictionElement.textContent = randomPrediction;
-        //         predictionElement.className = `prediction-value ${randomPrediction === 'Big' ? 'prediction-big' : 'prediction-small'}`;
-        //         predictionElement.style.animation = 'rubberBand 0.8s';
-
-        //         document.getElementById('confidenceText').textContent = `AI Confidence Level: ${confidence}%`;
-        //         document.getElementById('confidenceFill').style.width = `${confidence}%`;
-
-        //         // Remove animation after it completes
-        //         setTimeout(() => {
-        //             predictionElement.style.animation = '';
-        //         }, 800);
-        //     }, 3000);
-        // }
-
-       function showPrediction() {
-        document.getElementById('questionSection').classList.add('hidden');
-        document.getElementById('thinkingSection').classList.remove('hidden');
-
-        const messages = [
-            "Initializing AI neural network...",
-            "Connecting to game servers...",
-            "Downloading historical data...",
-            "Analyzing 500+ previous rounds...",
-            "Identifying pattern sequences...",
-            "Calculating probability distributions...",
-            "Cross-referencing with AI models...",
-            "Running Monte Carlo simulations...",
-            "Validating prediction accuracy...",
-            "Finalizing results...",
-            "Almost there..."
-        ];
-
-        let currentMessage = 0;
-        const messageElement = document.getElementById('thinkingMessage');
-
-        // Update message every second with smooth transition
-        const messageInterval = setInterval(() => {
-            currentMessage = (currentMessage + 1) % messages.length;
-            // Fade out
-            messageElement.style.opacity = 0;
-            setTimeout(() => {
-                messageElement.textContent = messages[currentMessage];
-                // Fade in
-                messageElement.style.opacity = 1;
-            }, 200);
-        }, 1500); // Change message every 1.5 seconds
-
-        // Simulate AI thinking time with random duration (4-6 seconds)
-        const thinkingTime = 4000 + Math.random() * 2000;
-
-        setTimeout(() => {
-            clearInterval(messageInterval);
-            
-            // Final message before showing result
-            messageElement.textContent = "Prediction complete!";
-            
-            // Small delay before showing result
-            setTimeout(() => {
-                document.getElementById('thinkingSection').classList.add('hidden');
-                document.getElementById('resultSection').classList.remove('hidden');
-
-                const predictions = ['Big', 'Small'];
-                const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
-                const confidence = Math.floor(Math.random() * 15) + 82; // 82-96%
-
-                const predictionElement = document.getElementById('predictionValue');
-                predictionElement.textContent = randomPrediction;
-                predictionElement.className = `prediction-value ${randomPrediction === 'Big' ? 'prediction-big' : 'prediction-small'}`;
-                predictionElement.style.animation = 'rubberBand 0.8s';
-
-                document.getElementById('confidenceText').textContent = `AI Confidence Level: ${confidence}%`;
-                document.getElementById('confidenceFill').style.width = `${confidence}%`;
-
-                // Remove animation after it completes
+            // Update message every second with smooth transition
+            const messageInterval = setInterval(() => {
+                currentMessage = (currentMessage + 1) % messages.length;
+                // Fade out
+                messageElement.style.opacity = 0;
                 setTimeout(() => {
-                    predictionElement.style.animation = '';
-                }, 800);
-            }, 500);
-        }, thinkingTime);
-    }
+                    messageElement.textContent = messages[currentMessage];
+                    // Fade in
+                    messageElement.style.opacity = 1;
+                }, 200);
+            }, 1500); // Change message every 1.5 seconds
+
+            // Simulate AI thinking time with random duration (4-6 seconds)
+            const thinkingTime = 4000 + Math.random() * 2000;
+
+            setTimeout(() => {
+                clearInterval(messageInterval);
+
+                // Final message before showing result
+                messageElement.textContent = "Prediction complete!";
+
+                // Small delay before showing result
+                setTimeout(() => {
+                    document.getElementById('thinkingSection').classList.add('hidden');
+                    document.getElementById('resultSection').classList.remove('hidden');
+
+                    const predictions = ['Big', 'Small'];
+                    const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+                    const confidence = Math.floor(Math.random() * 15) + 82; // 82-96%
+
+                    const predictionElement = document.getElementById('predictionValue');
+                    predictionElement.textContent = randomPrediction;
+                    predictionElement.className = `prediction-value ${randomPrediction === 'Big' ? 'prediction-big' : 'prediction-small'}`;
+                    predictionElement.style.animation = 'rubberBand 0.8s';
+
+                    document.getElementById('confidenceText').textContent = `AI Confidence Level: ${confidence}%`;
+                    document.getElementById('confidenceFill').style.width = `${confidence}%`;
+
+                    // Remove animation after it completes
+                    setTimeout(() => {
+                        predictionElement.style.animation = '';
+                    }, 800);
+                }, 500);
+            }, thinkingTime);
+        }
 
         // Reset prediction interface when period changes
         function resetPrediction() {
