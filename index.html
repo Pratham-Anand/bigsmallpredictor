@@ -53,6 +53,7 @@
             flex-direction: column;
             min-height: 100vh;
             overflow-x: hidden;
+            padding-top: 60px; /* Space for fixed navbar */
         }
 
         .gptlogotopbar {
@@ -87,14 +88,14 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
-            margin-top: 5px;
+            margin-top: 8px;
             padding: 0px 1rem;
             gap: 0.5rem;
         }
 
         h1 {
             color: rgb(255, 255, 255);
-            margin-top: 20px;
+            margin-top: 18px;
             margin-bottom: 15px;
             text-align: center;
             text-shadow: 1.5px 1.5px 1.5px #24a1de;
@@ -106,11 +107,16 @@
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             border-bottom: 1px solid rgb(47, 102, 121);
             color: rgb(47, 102, 121);
-            position: sticky;
+            position: fixed; /* Changed from sticky to fixed */
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 999;
             padding: 0.5rem 1rem;
             background: black;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .tashanwinlogo {
@@ -118,7 +124,7 @@
             width: auto;
             border-radius: 6px;
             margin-left: 10px;
-            margin-right: 22px;
+            margin-right: 42px;
         }
 
         .navgpt {
@@ -186,9 +192,10 @@
 
         .desc {
             font-family: 'Roboto', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
             flex: 1;
+            margin-left: 44px;
             min-width: 0;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -572,9 +579,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.6;
             }
@@ -584,30 +594,39 @@
             from {
                 transform: scale3d(1, 1, 1);
             }
+
             30% {
                 transform: scale3d(1.15, 0.85, 1);
             }
+
             40% {
                 transform: scale3d(0.85, 1.15, 1);
             }
+
             50% {
                 transform: scale3d(1.05, 0.95, 1);
             }
+
             65% {
                 transform: scale3d(0.95, 1.05, 1);
             }
+
             75% {
                 transform: scale3d(1.02, 0.98, 1);
             }
+
             to {
                 transform: scale3d(1, 1, 1);
             }
         }
 
         @keyframes dotsBounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-3px);
             }
@@ -617,6 +636,7 @@
             0% {
                 background-position: -468px 0;
             }
+
             100% {
                 background-position: 468px 0;
             }
@@ -724,40 +744,49 @@
             .prediction-value {
                 font-size: 1.3rem;
             }
+            
+            body {
+                padding-top: 55px; /* Slightly less space for very small screens */
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Navbar (now fixed at the top) -->
+    <nav class="navbar">
+        <div class="gpt-content">
+            <div class="three-line-menu">
+                <img src="images/menu.png" alt="Logo" class="navgpt" />
+            </div>
+            <div class="gpt-description" id="dropdownButton">
+                ChatGPT
+                <img src="images/down.png" style="height: 15px; font-size: bold" class="arrow" alt="img" />
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="#">Home</a>
+                    <a href="#">Predictions</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Help</a>
+                </div>
+            </div>
+            <img src="images/message.png" style="height: 50px" alt="Logo" class="navgpt" />
+        </div>
+    </nav>
+
+    <!-- Main scrollable content -->
     <div class="main-content">
         <div class="app-container">
-            <nav class="navbar">
-                <div class="gpt-content">
-                    <div class="three-line-menu">
-                        <img src="images/menu.png" alt="Logo" class="navgpt" />
-                    </div>
-                    <div class="gpt-description" id="dropdownButton">
-                        ChatGPT
-                        <img src="images/down.png" style="height: 15px; font-size: bold" class="arrow" alt="img" />
-                        <div class="dropdown-content" id="dropdownContent">
-                            <a href="#">Home</a>
-                            <a href="#">Predictions</a>
-                            <a href="#">Settings</a>
-                            <a href="#">Help</a>
-                        </div>
-                    </div>
-                    <img src="images/message.png" style="height: 50px" alt="Logo" class="navgpt" />
-                </div>
-            </nav>
-
             <!-- Description Section -->
             <div class="txt">
-                <span class="desc">This Predictor only Works on
-                    <strong><a target="_blank" href="https://s-affiliates.com/?serial=61321090&creative_id=4053"
-                            style="text-decoration: none; color: #24a1de;">TashanWin
-                        </a></strong></span>
-                <img src="images/tashanwin.jpg" alt="Logo" class="tashanwinlogo" />
+                
+                    <span class="desc">This Predictor only Works on
+                        <strong><a target="_blank"
+                                href="http://www.tashanwin.club/#/register?invitationCode=633741365429"
+                                style="text-decoration: none; color: #24a1de;">TashanWin
+                            </a></strong></span>
+                    <img src="images/tashanwin.jpg" alt="Logo" class="tashanwinlogo" />
+                
             </div>
 
             <h1>Color Trading Predictor</h1>
