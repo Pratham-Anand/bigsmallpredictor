@@ -107,7 +107,7 @@
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             border-bottom: 1px solid rgb(47, 102, 121);
             color: rgb(47, 102, 121);
-            position: fixed; /* Changed from sticky to fixed */
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
@@ -747,7 +747,7 @@
             }
             
             body {
-                padding-top: 55px; /* Slightly less space for very small screens */
+                padding-top: 55px;
             }
         }
     </style>
@@ -780,14 +780,12 @@
         <div class="app-container">
             <!-- Description Section -->
             <div class="txt">
-                
-                    <span class="desc">This Predictor only Works on
-                        <strong><a target="_blank"
-                                href="http://www.tashanwin.club/#/register?invitationCode=633741365429"
-                                style="text-decoration: none; color: #24a1de;">TashanWin
-                            </a></strong></span>
-                    <img src="images/tashanwin.jpg" alt="Logo" class="tashanwinlogo" />
-                
+                <span class="desc">This Predictor only Works on
+                    <strong><a target="_blank"
+                            href="http://www.tashanwin.club/#/register?invitationCode=633741365429"
+                            style="text-decoration: none; color: #24a1de;">TashanWin
+                        </a></strong></span>
+                <img src="images/tashanwin.jpg" alt="Logo" class="tashanwinlogo" />
             </div>
 
             <h1>Color Trading Predictor</h1>
@@ -969,6 +967,43 @@
             return `${mins}:${String(secs).padStart(2, '0')}`;
         }
 
+        // Get prediction from localStorage
+        function getStoredPrediction(period) {
+            const predictions = JSON.parse(localStorage.getItem('colorPredictions')) || {};
+            return predictions[period];
+        }
+
+        // Store prediction in localStorage
+        function storePrediction(period, prediction, confidence) {
+            const predictions = JSON.parse(localStorage.getItem('colorPredictions')) || {};
+            predictions[period] = { prediction, confidence };
+            localStorage.setItem('colorPredictions', JSON.stringify(predictions));
+        }
+
+        // Generate a new prediction
+        function generateNewPrediction() {
+            const predictions = ['Big', 'Small'];
+            const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
+            const confidence = Math.floor(Math.random() * 15) + 82; // 82-96%
+            return { prediction: randomPrediction, confidence };
+        }
+
+        // Display the prediction result
+        function displayPrediction(prediction, confidence) {
+            const predictionElement = document.getElementById('predictionValue');
+            predictionElement.textContent = prediction;
+            predictionElement.className = `prediction-value ${prediction === 'Big' ? 'prediction-big' : 'prediction-small'}`;
+            predictionElement.style.animation = 'rubberBand 0.8s';
+
+            document.getElementById('confidenceText').textContent = `AI Confidence Level: ${confidence}%`;
+            document.getElementById('confidenceFill').style.width = `${confidence}%`;
+
+            // Remove animation after it completes
+            setTimeout(() => {
+                predictionElement.style.animation = '';
+            }, 800);
+        }
+
         // Update period and timer
         function updatePeriodAndTimer() {
             currentPeriod = generatePeriodNumber();
@@ -992,6 +1027,20 @@
             document.getElementById('questionSection').classList.add('hidden');
             document.getElementById('thinkingSection').classList.remove('hidden');
 
+            // Check if we already have a prediction for this period
+            const storedPrediction = getStoredPrediction(currentPeriod);
+            
+            if (storedPrediction) {
+                // If we have a stored prediction, show it immediately
+                setTimeout(() => {
+                    document.getElementById('thinkingSection').classList.add('hidden');
+                    document.getElementById('resultSection').classList.remove('hidden');
+                    displayPrediction(storedPrediction.prediction, storedPrediction.confidence);
+                }, 500);
+                return;
+            }
+
+            // If no stored prediction, simulate AI thinking
             const messages = [
                 "Initializing AI neural network...",
                 "Connecting to game servers...",
@@ -1035,22 +1084,10 @@
                     document.getElementById('thinkingSection').classList.add('hidden');
                     document.getElementById('resultSection').classList.remove('hidden');
 
-                    const predictions = ['Big', 'Small'];
-                    const randomPrediction = predictions[Math.floor(Math.random() * predictions.length)];
-                    const confidence = Math.floor(Math.random() * 15) + 82; // 82-96%
-
-                    const predictionElement = document.getElementById('predictionValue');
-                    predictionElement.textContent = randomPrediction;
-                    predictionElement.className = `prediction-value ${randomPrediction === 'Big' ? 'prediction-big' : 'prediction-small'}`;
-                    predictionElement.style.animation = 'rubberBand 0.8s';
-
-                    document.getElementById('confidenceText').textContent = `AI Confidence Level: ${confidence}%`;
-                    document.getElementById('confidenceFill').style.width = `${confidence}%`;
-
-                    // Remove animation after it completes
-                    setTimeout(() => {
-                        predictionElement.style.animation = '';
-                    }, 800);
+                    // Generate and store new prediction
+                    const { prediction, confidence } = generateNewPrediction();
+                    storePrediction(currentPeriod, prediction, confidence);
+                    displayPrediction(prediction, confidence);
                 }, 500);
             }, thinkingTime);
         }
